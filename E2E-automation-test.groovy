@@ -5,7 +5,8 @@ node {
     }
     stage('Smoke') {
         try {
-            sh "mvn clean verify -Dtags='type:Smoke'"
+            def mvnHome =  tool name: 'mvn-3', type: 'maven'
+            sh "${mvnHome}/bin/mvn clean verify -Dtags='type:Smoke'"
         } catch (err) {
 
         } finally {
@@ -18,7 +19,8 @@ node {
     }
     stage('API') {
         try {
-            sh "mvn clean verify -Dtags='type:API'"
+            def mvnHome =  tool name: 'mvn-3', type: 'maven'
+            sh "${mvnHome}/bin/mvn clean verify -Dtags='type:API'"
         } catch (err) {
 
         } finally {
@@ -31,7 +33,8 @@ node {
     }
     stage('UI') {
         try {
-            sh "mvn clean verify -Dtags='type:UI'"
+            def mvnHome =  tool name: 'mvn-3', type: 'maven'
+           // sh "${mvnHome}/bin/mvn clean verify -Dtags='type:UI'"
         } catch (err) {
 
         } finally {
